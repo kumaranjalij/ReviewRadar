@@ -1,0 +1,10 @@
+__pycache__/
+venv/
+env/
+.idea/
+*.iml*.log
+*.tmp
+Pipfile.lock
+poetry.lock
+.DS_Store
+config.ini

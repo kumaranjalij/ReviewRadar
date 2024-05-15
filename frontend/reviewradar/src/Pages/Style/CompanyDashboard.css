@@ -1,0 +1,187 @@
+/* Style/CompanyDashboard.css */
+/* Style for the company dashboard */
+.company-dashboard {
+  background-color: black;
+  color: rgb(255, 255, 255);
+  padding: 40px; /* Add padding to the entire dashboard */
+  /* margin: 20px;  */
+  text-align: center; /* Center align the content */
+}
+
+
+.company-dashboard h1 {
+  font-size: 3rem; /* Increase font size of company name */
+  font-weight: bold; /* Make the company name bold */
+  margin-bottom: 20px;
+  text-transform: uppercase; /* Convert company name to uppercase */
+}
+
+.images-container {
+  display: flex;
+  flex-direction: column; /* Display images in a column */
+  align-items: center; /* Center align the images horizontally */
+  margin-bottom: 20px;
+}
+
+.images-container img {
+  width: 70%; /* Make images fill almost 70% of the screen width */
+  height: auto; /* Auto adjust height to maintain aspect ratio */
+  max-height: 70vh; /* Limit maximum height to 70% of the viewport height */
+  margin-bottom: 40px; /* Add space between images */
+}
+
+.company-dashboard p {
+  font-size: 1rem;
+}
+
+/* Increase font size and add margin for the initial paragraphs */
+.images-container p:nth-of-type(1),
+.images-container p:nth-of-type(2) {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+/* Style for the conclusion paragraph */
+.company-dashboard p.conclusion {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+/* Style/CompanyDashboard.css */
+/* .company-dashboard {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  text-align: center; 
+} */
+
+.company-dashboard h1 {
+  font-size: 3rem; /* Increase font size of company name */
+  font-weight: bold; /* Make the company name bold */
+  margin-bottom: 20px;
+  text-transform: uppercase; /* Convert company name to uppercase */
+}
+
+.images-container {
+  display: flex;
+  flex-direction: column; /* Display images in a column */
+  align-items: center; /* Center align the images horizontally */
+  margin-bottom: 20px;
+}
+
+.images-container img {
+  width: 70%; /* Make images fill almost 70% of the screen width */
+  height: auto; /* Auto adjust height to maintain aspect ratio */
+  max-height: 70vh; /* Limit maximum height to 70% of the viewport height */
+  margin-bottom: 40px; /* Add space between images */
+}
+
+/* .company-dashboard p {
+  font-size: 1rem;
+} */
+.company-dashboard p {
+  font-size: 18px;
+}
+
+/* Increase font size and add margin for the initial paragraphs */
+.images-container p:nth-of-type(1),
+.images-container p:nth-of-type(2) {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+/* Style for the conclusion paragraph */
+.company-dashboard p.conclusion {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Style for the review container */
+.review-container {
+  margin-top: 20px;
+}
+
+/* Style for the review textarea */
+.review-textarea {
+  width: 70%; /* Make textarea fill almost 70% of the screen width */
+  height: 100px; /* Set height for textarea */
+  margin-bottom: 10px; /* Add space below the textarea */
+  padding: 10px; /* Add padding to textarea */
+  resize: vertical; /* Allow vertical resizing */
+}
+
+/* Style for the analyze button */
+.analyze-button {
+  padding: 10px 20px; /* Add padding to button */
+  font-size: 1rem; /* Set font size for button */
+  background-color: #007bff; /* Set background color */
+  color: white; /* Set text color */
+  border: none; /* Remove border */
+  cursor: pointer; /* Set cursor to pointer */
+}
+
+/* Style for the analysis result */
+.analysis-result {
+  margin-top: 20px; /* Add space above the result */
+  font-size: 20px;
+}
+
+/* Style for the review container */
+.review-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Style for the review textarea */
+.review-textarea {
+  width: 70%; /* Make textarea fill almost 70% of the screen width */
+  height: 60px; /* Set smaller height for textarea */
+  margin-bottom: 20px; /* Add more space below the textarea */
+  padding: 10px; /* Add padding to textarea */
+  resize: vertical; /* Allow vertical resizing */
+  border: 2px solid #ccc; /* Add border */
+  border-radius: 8px; /* Add rounded corners */
+  background-color: #fff; /* Set background color */
+  transition: border-color 0.3s ease; /* Add transition effect */
+  font-size: 1.5rem; /* Increase font size */
+}
+/* Add hover effect for the textarea */
+.review-textarea:hover {
+  border-color: #007bff; /* Change border color on hover */
+}
+
+/* Style for the analyze button */
+.analyze-button {
+  padding: 15px 40px; /* Increase padding to make the button bigger */
+  font-size: 1.2rem; /* Increase font size for button */
+  background-color: #007bff; /* Set background color */
+  color: white; /* Set text color */
+  border: none; /* Remove border */
+  border-radius: 50px; /* Make border-radius large to create an oval shape */
+  cursor: pointer; /* Set cursor to pointer */
+  transition: background-color 0.3s ease; /* Add transition effect */
+  margin-top: 10px; /* Add space above the button */
+}
+/* Add hover effect for the button */
+.analyze-button:hover {
+  background-color: #0056b3; /* Darken background color on hover */
+}
+
+/* Style for the placeholder text */
+.review-textarea::placeholder {
+  font-size: 1.2rem; /* Increase font size of placeholder text */
+}
+
+/* Style for the "Add Your Voice" section */
+.add-voice {
+  font-size: 20px; /* Increase font size */
+  font-weight: bold; /* Make it bold */
+  margin-bottom: 10px; /* Add space below */
+}
+
+/* Style for the text below the "Add Your Voice" section */
+.add-voice-text {
+  font-size: 4rem; /* Increase font size */
+  margin-bottom: 20px; /* Add more space below */
+}

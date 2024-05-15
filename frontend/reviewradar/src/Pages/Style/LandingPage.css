@@ -1,0 +1,51 @@
+.landing-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    background-color: black;
+    color: white;
+    padding: 60px;
+  }
+  
+  .title {
+    font-size: 120px;
+    margin-bottom: 20px;
+    font-family: "Dancing Script", cursive;
+    font-weight: bolder;
+    font-style: normal;
+  }
+  
+  .subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+  }
+  
+  .dropdown-container {
+    margin: 15px auto;
+  }
+  
+  .dropdown {
+    padding: 10px 5px;
+    margin: 2px;
+    font-size: 20px;
+    border: 2px solid white;
+    border-radius: 1rem;
+    background-color: black;
+    color: white;
+
+    width: 200px;
+  }
+
+  .dropdown option{
+    padding: 5px;
+    width: 160px;
+    
+  }
+  
+  .link {
+    color: white;
+    text-decoration: none;
+  }
+  
