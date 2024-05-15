@@ -1,7 +1,7 @@
 __pycache__/
 venv/
 env/
-.idea/
+../.idea/
 *.iml*.log
 *.tmp
 Pipfile.lock
