@@ -25,7 +25,7 @@ pipeline {
 
         stage('BACKEND TEST') {
              steps {
-                 sh 'test_review_analyzer.py'
+                 sh 'python3 test_review_analyzer.py'
              }
         }
         

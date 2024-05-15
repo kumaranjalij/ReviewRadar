@@ -1,0 +1,22 @@
+---
+- name: Pull Docker Image from Docker Hub
+  hosts: localhost
+  remote_user: anjali
+  become: false
+  tasks:
+    - name: Pull Docker Image
+      docker_image:
+        name: "anjalijkumar/java_calc"
+        source: pull
+      register: docker_pull_result
+
+    - name: Display Docker Pull Result
+      debug:
+        var: docker_pull_result
+
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+    - name: Running container
+      shell: docker run -it -d --name java_calc anjalijkumar/java_calc
