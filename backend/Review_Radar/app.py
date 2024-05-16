@@ -91,6 +91,7 @@ def Home():
 @app.route("/<company_name>")
 def company_home(company_name):
     logging.info("accessed home page of company %s", company_name)
+    print("the dashboard endpoint was accessed")
     if company_name.lower() == "apple":
         # Data for Apple
         with open("./images/Apple1.png", "rb") as file:
