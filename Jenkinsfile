@@ -19,22 +19,27 @@ pipeline {
         stage('BACKEND BUILD') {
             steps {
             	//sh 'pip install -r requirements.txt'
-                sh 'python3 app.py'
+                sh 'python3 ./backend/Review_Radar/app.py'
             }
         }
 
         stage('BACKEND TEST') {
              steps {
-                 sh 'python3 test_review_analyzer.py'
+                 sh 'python3 ./backend/Review_Radar/test_review_analyzer.py'
              }
         }
         
         stage('FRONTEND BUILD') {
-            steps {
-                sh 'npm install'
-                sh 'npm run build'
-            }
-        }
+	    steps {
+		// Change directory to your specific directory
+		dir('./frontend/reviewradar/') {
+		    // Run npm install and npm run build commands
+		    sh 'npm install'
+		    sh 'npm run build'
+		}
+	    }
+	}
+
 
         stage('BUILD DOCKER IMAGES') {
             steps {
