@@ -18,7 +18,7 @@ pipeline {
         }
         stage('BACKEND BUILD') {
             steps {
-            	//sh 'pip install -r requirements.txt'
+            	sh 'pip install -r ./backend/Review_Radar/requirements.txt'
                 sh 'python3 ./backend/Review_Radar/app.py'
             }
         }
