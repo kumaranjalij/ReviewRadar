@@ -16,22 +16,15 @@ pipeline {
                 }
             }
         }
-        
-        stage('Install NLTK Resources') {
-            steps {
-                script {
-                    // Install the necessary NLTK resources
-                    sh 'python -m nltk.downloader vader_lexicon'
-                }
-            }
-        }
-
+  
         
 	stage('BACKEND BUILD') {
 	    steps {
 		// Activate the virtual environment
 		withEnv(['PATH+VENV=/var/lib/jenkins/workspace/ReviewRadar/rrenv/bin']) {
 		    // Install packages from requirements.txt within the virtual environment
+		    sh 'python3 -m nltk.downloader vader_lexicon'
+		    
 		    sh 'pip install -r ./backend/Review_Radar/requirements.txt'
 
 		    // Run your Python script within the virtual environment
