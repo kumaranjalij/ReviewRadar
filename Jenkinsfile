@@ -38,10 +38,10 @@ pipeline {
 	stage('BACKEND TEST') {
 	    steps {
 		// Activate the existing Python environment
-		withEnv(['PATH+VENV=/var/lib/jenkins/workspace/ReviewRadar/rrenv/bin']) {
+		//withEnv(['PATH+VENV=/var/lib/jenkins/workspace/ReviewRadar/rrenv/bin']) {
 		    // Run your test script
 		    sh 'python3 ./backend/Review_Radar/test_review_analyzer.py'
-		}
+		//}
 	    }
 	}
 
