@@ -24,6 +24,7 @@ pipeline {
 		withEnv(['PATH+VENV=/var/lib/jenkins/workspace/ReviewRadar/rrenv/bin']) {
 		    // Install packages from requirements.txt within the virtual environment
 		    sh 'python3 -m nltk.downloader vader_lexicon'
+		    sh 'python3 -m spacy download en_core_web_sm'
 		    
 		    sh 'pip install -r ./backend/Review_Radar/requirements.txt'
 
