@@ -18,11 +18,16 @@ pipeline {
         }
         stage('BACKEND BUILD') {
 	    steps {
-		// Create a virtual environment
+		// Create a virtual environment if it doesn't exist
 		sh 'python3 -m venv venv'
 
-		// Activate the virtual environment
-		sh '. venv/bin/activate'
+		// Check if the virtual environment is already activated
+		script {
+		    if (!env.PATH.contains('venv')) {
+		        // Activate the virtual environment
+		        sh '. venv/bin/activate'
+		    }
+		}
 
 		// Install packages from requirements.txt within the virtual environment
 		sh 'pip install -r ./backend/Review_Radar/requirements.txt'
@@ -34,8 +39,13 @@ pipeline {
 
 	stage('BACKEND TEST') {
 	    steps {
-		// Activate the virtual environment
-		sh '. venv/bin/activate'
+		// Check if the virtual environment is already activated
+		script {
+		    if (!env.PATH.contains('venv')) {
+		        // Activate the virtual environment
+		        sh '. venv/bin/activate'
+		    }
+		}
 
 		// Run your test script within the virtual environment
 		sh 'python3 ./backend/Review_Radar/test_review_analyzer.py'
@@ -44,6 +54,7 @@ pipeline {
 		sh 'deactivate'
 	    }
 	}
+
 
         
         stage('FRONTEND BUILD') {
