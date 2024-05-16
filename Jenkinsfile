@@ -29,7 +29,7 @@ pipeline {
 		    sh 'pip install -r ./backend/Review_Radar/requirements.txt'
 
 		    // Run your Python script within the virtual environment
-		    sh 'python3 ./backend/Review_Radar/app.py'
+            	    sh 'nohup python3 ./backend/Review_Radar/app.py > app.log 2>&1 &'
 		}
 	    }
 	}
