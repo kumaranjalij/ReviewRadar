@@ -50,11 +50,11 @@ pipeline {
             steps {
                 script{
                     docker.withRegistry('', 'DockerHubCred') {
-                    sh 'docker tag "${DOCKER_IMAGE_NAME_FRONTEND}" anjalijkumar/"${DOCKER_IMAGE_NAME_FRONTEND}":latest'
-                    sh 'docker push anjalijkumar/"${DOCKER_IMAGE_NAME_FRONTEND}"'
+                    sh 'docker tag review-radar-frontend anjalijkumar/review-radar-frontend:latest'
+                    sh 'docker push anjalijkumar/review-radar-frontend'
                     
-                    sh 'docker tag "${DOCKER_IMAGE_NAME_BACKEND}" anjalijkumar/"${DOCKER_IMAGE_NAME_BACKEND}":latest'
-                    sh 'docker push anjalijkumar/"${DOCKER_IMAGE_NAME_BACKEND}"'
+                    sh 'docker tag review-radar-backend anjalijkumar/review-radar-backend:latest'
+                    sh 'docker push anjalijkumar/review-radar-backend'
                     }
                 }
 
@@ -62,26 +62,26 @@ pipeline {
                 sh "docker image prune -f"
                 script {
                     //check if frontend container is already running
-                    def isContainerRunning = sh(script: "docker ps -q --filter name="${DOCKER_IMAGE_NAME_FRONTEND}"", returnStatus: true)
+                    def isContainerRunning = sh(script: "docker ps -q --filter name=review-radar-frontend", returnStatus: true)
                     if(isContainerRunning == 0) {
                         //if container is running stop it
-                        sh "docker stop "${DOCKER_IMAGE_NAME_FRONTEND}""
+                        sh "docker stop review-radar-frontend"
                     }
                     
                     //check if backend container is already running
-                    def isContainerRunning = sh(script: "docker ps -q --filter name="${DOCKER_IMAGE_NAME_BACKEND}"", returnStatus: true)
+                    def isContainerRunning = sh(script: "docker ps -q --filter name=review-radar-backend", returnStatus: true)
                     if(isContainerRunning == 0) {
                         //if container is running stop it
-                        sh "docker stop "${DOCKER_IMAGE_NAME_BACKEND}""
+                        sh "docker stop review-radar-backend"
                     }
                 }
                 //remove frontend container and image
-                sh "docker rm "${DOCKER_IMAGE_NAME_FRONTEND}" || true"
-                sh "docker rmi -f anjalijkumar/"${DOCKER_IMAGE_NAME_FRONTEND}" || true"
+                sh "docker rm review-radar-frontend || true"
+                sh "docker rmi -f anjalijkumar/review-radar-frontend || true"
                 
                 //remove backend container and image
-                sh "docker rm "${DOCKER_IMAGE_NAME_BACKEND}" || true"
-                sh "docker rmi -f anjalijkumar/"${DOCKER_IMAGE_NAME_BACKEND}" || true"
+                sh "docker rm review-radar-backend || true"
+                sh "docker rmi -f anjalijkumar/review-radar-backend || true"
                 
 
             }
