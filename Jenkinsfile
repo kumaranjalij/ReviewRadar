@@ -18,14 +18,19 @@ pipeline {
         }
         stage('BACKEND BUILD') {
 	    steps {
-		// Create a virtual environment if it doesn't exist
-		sh 'python3 -m venv venv'
+		// Check if the virtual environment directory exists
+		script {
+		    if (!fileExists('rrenv')) {
+		        // Create a virtual environment if it doesn't exist
+		        sh 'python3 -m venv rrenv'
+		    }
+		}
 
 		// Check if the virtual environment is already activated
 		script {
-		    if (!env.PATH.contains('venv')) {
+		    if (!env.PATH.contains('rrenv')) {
 		        // Activate the virtual environment
-		        sh '. venv/bin/activate'
+		        sh '. rrenv/bin/activate'
 		    }
 		}
 
@@ -37,13 +42,14 @@ pipeline {
 	    }
 	}
 
+
 	stage('BACKEND TEST') {
 	    steps {
 		// Check if the virtual environment is already activated
 		script {
-		    if (!env.PATH.contains('venv')) {
+		    if (!env.PATH.contains('rrenv')) {
 		        // Activate the virtual environment
-		        sh '. venv/bin/activate'
+		        sh '. rrenv/bin/activate'
 		    }
 		}
 
