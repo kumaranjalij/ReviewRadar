@@ -16,51 +16,30 @@ pipeline {
                 }
             }
         }
-        stage('BACKEND BUILD') {
+        
+	stage('BACKEND BUILD') {
 	    steps {
-		// Check if the virtual environment directory exists
-		script {
-		    if (!fileExists('rrenv')) {
-		        // Create a virtual environment if it doesn't exist
-		        sh 'python3 -m venv rrenv'
-		    }
+		// Activate the virtual environment
+		withEnv(['PATH+VENV=/var/lib/jenkins/workspace/ReviewRadar/rrenv/bin']) {
+		    // Install packages from requirements.txt within the virtual environment
+		    sh 'pip install -r ./backend/Review_Radar/requirements.txt'
+
+		    // Run your Python script within the virtual environment
+		    sh 'python3 ./backend/Review_Radar/app.py'
 		}
-
-		// Check if the virtual environment is already activated
-		script {
-		    if (!env.PATH.contains('rrenv')) {
-		        // Activate the virtual environment
-		        sh '. rrenv/bin/activate'
-		    }
-		}
-
-		// Install packages from requirements.txt within the virtual environment
-		sh 'pip install -r ./backend/Review_Radar/requirements.txt'
-
-		// Run your Python script within the virtual environment
-		sh 'python3 ./backend/Review_Radar/app.py'
 	    }
 	}
 
 
 	stage('BACKEND TEST') {
 	    steps {
-		// Check if the virtual environment is already activated
-		script {
-		    if (!env.PATH.contains('rrenv')) {
-		        // Activate the virtual environment
-		        sh '. rrenv/bin/activate'
-		    }
+		// Activate the existing Python environment
+		withEnv(['PATH+VENV=/var/lib/jenkins/workspace/ReviewRadar/rrenv/bin']) {
+		    // Run your test script
+		    sh 'python3 ./backend/Review_Radar/test_review_analyzer.py'
 		}
-
-		// Run your test script within the virtual environment
-		sh 'python3 ./backend/Review_Radar/test_review_analyzer.py'
-
-		// Deactivate the virtual environment
-		sh 'deactivate'
 	    }
 	}
-
 
         
         stage('FRONTEND BUILD') {
