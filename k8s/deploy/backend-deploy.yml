@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: review-radar-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: review-radar-backend
+  template:
+    metadata:
+      labels:
+        app: review-radar-backend
+    spec:
+      containers:
+        - name: review-radar-backend
+          image: anjalijkumar/review-radar-backend:latest
+          ports:
+            - containerPort: 5001

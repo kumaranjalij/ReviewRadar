@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: review-radar-backend-service
+spec:
+  selector:
+    app: review-radar-backend
+  ports:
+    - protocol: TCP
+      port: 5001
+      targetPort: 5001
+  

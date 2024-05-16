@@ -1,12 +1,12 @@
 import unittest
 from unittest import mock
-from app import analyze_review, flask_app
+from app import analyze_review, app
 
 
 class TestReviewAnalyzer(unittest.TestCase):
     def setUp(self):
         # Set up Flask application context before each test
-        self.app_context = flask_app.app_context()
+        self.app_context = app.app_context()
         self.app_context.push()
 
     def tearDown(self):

@@ -14,13 +14,13 @@ logging.basicConfig(filename='app.log' , level= logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 # Create flask app
-flask_app = Flask(__name__)
-CORS(flask_app)
-flask_app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://anjali:Anjali%402000@localhost:3306/review_radar'
-flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app = Flask(__name__)
+CORS(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://anjali:Anjali%402000@localhost:3306/review_radar'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize SQLAlchemy
-db = SQLAlchemy(flask_app)
+db = SQLAlchemy(app)
 
 
 class NewReview(db.Model):
@@ -82,13 +82,13 @@ def preprocess_sentence(sentence):
     return preprocessed_sentence
 
 
-@flask_app.route("/")
+@app.route("/")
 def Home():
     logging.info("Home page is accessed")
     return "hai this is the home page"
 
 
-@flask_app.route("/<company_name>")
+@app.route("/<company_name>")
 def company_home(company_name):
     logging.info("accessed home page of company %s", company_name)
     if company_name.lower() == "apple":
@@ -120,7 +120,7 @@ def company_home(company_name):
     return jsonify(data)
 
 
-@flask_app.route('/<company_name>/analyze', methods=['POST'])
+@app.route('/<company_name>/analyze', methods=['POST'])
 def analyze_review(company_name):
     logging.info('Analyzing review %s', company_name)
     if company_name.lower() == "apple":
@@ -173,4 +173,4 @@ def analyze_review(company_name):
 
 
 if __name__ == "__main__":
-    flask_app.run(debug=True, port=5001)
+    app.run(debug=True, port=5001)

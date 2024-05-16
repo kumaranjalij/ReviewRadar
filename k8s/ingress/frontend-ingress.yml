@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: review-radar-frontend-ingress
+spec:
+  rules:
+    - host: reviewradar.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: review-radar-frontend-service
+                port:
+                  number: 3000
+

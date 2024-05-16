@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: review-radar-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: review-radar-frontend
+  template:
+    metadata:
+      labels:
+        app: review-radar-frontend
+    spec:
+      containers:
+        - name: review-radar-frontend
+          image: anjalijkumar/review-radar-frontend:latest
+          ports:
+            - containerPort: 3000
