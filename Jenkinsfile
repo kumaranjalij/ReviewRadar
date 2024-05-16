@@ -17,6 +17,16 @@ pipeline {
             }
         }
         
+        stage('Install NLTK Resources') {
+            steps {
+                script {
+                    // Install the necessary NLTK resources
+                    sh 'python -m nltk.downloader vader_lexicon'
+                }
+            }
+        }
+
+        
 	stage('BACKEND BUILD') {
 	    steps {
 		// Activate the virtual environment
