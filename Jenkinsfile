@@ -69,7 +69,7 @@ pipeline {
                     }
                     
                     //check if backend container is already running
-                    def isContainerRunning = sh(script: "docker ps -q --filter name=review-radar-backend", returnStatus: true)
+                    isContainerRunning = sh(script: "docker ps -q --filter name=review-radar-backend", returnStatus: true)
                     if(isContainerRunning == 0) {
                         //if container is running stop it
                         sh "docker stop review-radar-backend"
