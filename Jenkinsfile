@@ -17,17 +17,34 @@ pipeline {
             }
         }
         stage('BACKEND BUILD') {
-            steps {
-            	sh 'pip install -r ./backend/Review_Radar/requirements.txt'
-                sh 'python3 ./backend/Review_Radar/app.py'
-            }
-        }
+	    steps {
+		// Create a virtual environment
+		sh 'python3 -m venv venv'
 
-        stage('BACKEND TEST') {
-             steps {
-                 sh 'python3 ./backend/Review_Radar/test_review_analyzer.py'
-             }
-        }
+		// Activate the virtual environment
+		sh 'source venv/bin/activate'
+
+		// Install packages from requirements.txt within the virtual environment
+		sh 'pip install -r ./backend/Review_Radar/requirements.txt'
+
+		// Run your Python script within the virtual environment
+		sh 'python3 ./backend/Review_Radar/app.py'
+	    }
+	}
+
+	stage('BACKEND TEST') {
+	    steps {
+		// Activate the virtual environment
+		sh 'source venv/bin/activate'
+
+		// Run your test script within the virtual environment
+		sh 'python3 ./backend/Review_Radar/test_review_analyzer.py'
+
+		// Deactivate the virtual environment
+		sh 'deactivate'
+	    }
+	}
+
         
         stage('FRONTEND BUILD') {
 	    steps {
