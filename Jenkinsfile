@@ -88,36 +88,6 @@ pipeline {
                     sh 'docker push anjalijkumar/review-radar-backend:latest'
                     
                 }
-
-                //Remove dangling images
-                sh 'echo "removing dangling images"'
-                
-                sh "docker image prune -f"
-                
-                script {
-                    // Check if frontend container is already running
-                    def isFrontendRunning = sh(script: "docker ps -q --filter name=anjalijkumar/review-radar-frontend", returnStatus: true)
-                    if (isFrontendRunning == 0) {
-                        // Stop frontend container if it is running
-                        sh "docker stop anjalijkumar/review-radar-frontend"
-                    }
-                    
-                    // Check if backend container is already running
-                    def isBackendRunning = sh(script: "docker ps -q --filter name=anjalijkumar/review-radar-backend", returnStatus: true)
-                    if (isBackendRunning == 0) {
-                        // Stop backend container if it is running
-                        sh "docker stop anjalijkumar/review-radar-backend"
-                    }
-                }
-                
-                //remove frontend container and image
-                //sh "docker rm review-radar-frontend || true"
-                sh "docker rmi -f anjalijkumar/review-radar-frontend || true"
-                
-                //remove backend container and image
-                //sh "docker rm review-radar-backend || true"
-                sh "docker rmi -f anjalijkumar/review-radar-backend || true"
-            }
         }
 
         stage('RUN ANSIBLE PLAYBOOK') {
