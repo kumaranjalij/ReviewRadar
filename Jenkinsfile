@@ -96,17 +96,17 @@ pipeline {
                 
                 script {
                     // Check if frontend container is already running
-                    def isFrontendRunning = sh(script: "docker ps -q --filter name=review-radar-frontend", returnStatus: true)
+                    def isFrontendRunning = sh(script: "docker ps -q --filter name=anjalijkumar/review-radar-frontend", returnStatus: true)
                     if (isFrontendRunning == 0) {
                         // Stop frontend container if it is running
-                        sh "docker stop review-radar-frontend"
+                        sh "docker stop anjalijkumar/review-radar-frontend"
                     }
                     
                     // Check if backend container is already running
-                    def isBackendRunning = sh(script: "docker ps -q --filter name=review-radar-backend", returnStatus: true)
+                    def isBackendRunning = sh(script: "docker ps -q --filter name=anjalijkumar/review-radar-backend", returnStatus: true)
                     if (isBackendRunning == 0) {
                         // Stop backend container if it is running
-                        sh "docker stop review-radar-backend"
+                        sh "docker stop anjalijkumar/review-radar-backend"
                     }
                 }
                 
