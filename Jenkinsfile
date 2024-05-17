@@ -75,6 +75,7 @@ pipeline {
         stage('PUSH DOCKER IMAGE') {
             steps {
                 script{
+                    sh 'echo "inside script"'
                     docker.withRegistry('', 'DockerHubCred') {
                     sh 'echo "tagging and pushing frontend"'
                     sh 'docker tag review-radar-frontend anjalijkumar/review-radar-frontend:latest'
@@ -111,8 +112,6 @@ pipeline {
                 //remove backend container and image
                 sh "docker rm review-radar-backend || true"
                 sh "docker rmi -f anjalijkumar/review-radar-backend || true"
-                
-
             }
         }
 
