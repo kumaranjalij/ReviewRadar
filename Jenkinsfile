@@ -76,15 +76,18 @@ pipeline {
             steps {
                 script{
                     docker.withRegistry('', 'DockerHubCred') {
+                    sh 'echo "tagging and pushing frontend"'
                     sh 'docker tag review-radar-frontend anjalijkumar/review-radar-frontend:latest'
                     sh 'docker push anjalijkumar/review-radar-frontend:latest'
                     
+                    sh 'echo "tagging and pushing backend"'
                     sh 'docker tag review-radar-backend anjalijkumar/review-radar-backend:latest'
                     sh 'docker push anjalijkumar/review-radar-backend:latest'
                     }
                 }
 
                 //Remove dangling images
+                sh 'echo "removing dangling images"'
                 sh "docker image prune -f"
                 script {
                     //check if frontend container is already running
