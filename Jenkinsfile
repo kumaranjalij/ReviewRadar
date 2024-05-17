@@ -60,11 +60,15 @@ pipeline {
 
         stage('BUILD DOCKER IMAGES') {
             steps {
-                    script {
+        	script {
+        	     // Build backend Docker image
+                     //docker.build("${DOCKER_IMAGE_NAME_BACKEND}", './backend/Review_Radar/')
+                     sh 'docker build -t "${DOCKER_IMAGE_NAME_BACKEND}" ./backend/Review_Radar/'
                         
-                        docker.build("${DOCKER_IMAGE_NAME_BACKEND}", './backend/Review_Radar/')
-                    	docker.build("${DOCKER_IMAGE_NAME_FRONTEND}", './frontend/reviewradar/')
-                    }
+                     // Build frontend Docker image
+                     //docker.build("${DOCKER_IMAGE_NAME_FRONTEND}", './frontend/reviewradar/')
+                     sh 'docker build -t "${DOCKER_IMAGE_NAME_FRONTEND}" ./frontend/reviewradar/'
+                }
             }
         }
 
