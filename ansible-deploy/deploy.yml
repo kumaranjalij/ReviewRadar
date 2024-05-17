@@ -3,21 +3,7 @@
   hosts: localhost
   remote_user: anjali
   become: false
-  tasks:
-    - name: Set Kubernetes context
-      ansible.builtin.shell: |
-        kubectl config use-context minikube
-      environment:
-        KUBECONFIG: ~/.kube/config
-      
-    - name: Deleting older application files
-      ansible.builtin.shell: |
-        kubectl delete -f ../k8s/deploy/backend-deploy.yml --ignore-not-found=true
-        kubectl delete -f ../k8s/deploy/frontend-deploy.yml --ignore-not-found=true
-        kubectl delete -f ../k8s/services/backend-service.yml --ignore-not-found=true
-        kubectl delete -f ../k8s/services/frontend-service.yml --ignore-not-found=true
-        kubectl delete -f ../k8s/ingress/ingress.yml --ignore-not-found=true
-        
+  tasks:       
     - name: Deploying application to kubernetes cluster
       ansible.builtin.shell: |
         kubectl apply -f ../k8s/deploy/backend-deploy.yml
