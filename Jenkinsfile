@@ -5,7 +5,6 @@ pipeline {
         DOCKER_IMAGE_NAME_FRONTEND = 'anjalijkumar/review-radar-frontend'
         DOCKER_IMAGE_NAME_BACKEND = 'anjalijkumar/review-radar-backend'
         GITHUB_REPO_URL = 'https://github.com/kumaranjalij/ReviewRadar.git'
-        DOCKER_HUB_CREDENTIALS = credentials('DockerHubCred')
     }
 
     stages {
@@ -77,7 +76,7 @@ pipeline {
             steps {
                 script{
                     sh 'echo "inside script"'
-                    docker.withRegistry('', "$DOCKER_HUB_CREDENTIALS") {
+                    docker.withRegistry('', 'DockerHubCred') {
                     
                     sh 'echo "pushing frontend"'
                     sh 'docker push anjalijkumar/review-radar-frontend:latest'
