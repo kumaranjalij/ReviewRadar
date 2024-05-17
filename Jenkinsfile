@@ -77,10 +77,10 @@ pipeline {
                 script{
                     docker.withRegistry('', 'DockerHubCred') {
                     sh 'docker tag review-radar-frontend anjalijkumar/review-radar-frontend:latest'
-                    sh 'docker push anjalijkumar/review-radar-frontend'
+                    sh 'docker push anjalijkumar/review-radar-frontend:latest'
                     
                     sh 'docker tag review-radar-backend anjalijkumar/review-radar-backend:latest'
-                    sh 'docker push anjalijkumar/review-radar-backend'
+                    sh 'docker push anjalijkumar/review-radar-backend:latest'
                     }
                 }
 
