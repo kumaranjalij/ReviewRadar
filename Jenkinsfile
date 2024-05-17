@@ -62,8 +62,8 @@ pipeline {
             steps {
                     script {
                         
-                        docker.build("${DOCKER_IMAGE_NAME_FRONTEND}", './backend/Review_Radar/')
-                    	docker.build("${DOCKER_IMAGE_NAME_BACKEND}", './frontend/reviewradar/')
+                        docker.build("${DOCKER_IMAGE_NAME_BACKEND}", './backend/Review_Radar/')
+                    	docker.build("${DOCKER_IMAGE_NAME_FRONTEND}", './frontend/reviewradar/')
                     }
             }
         }
