@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment{
-        DOCKER_IMAGE_NAME_FRONTEND = 'review-radar-frontend'
-        DOCKER_IMAGE_NAME_BACKEND = 'review-radar-backend'
+        DOCKER_IMAGE_NAME_FRONTEND = 'anjalijkumar/review-radar-frontend'
+        DOCKER_IMAGE_NAME_BACKEND = 'anjalijkumar/review-radar-backend'
         GITHUB_REPO_URL = 'https://github.com/kumaranjalij/ReviewRadar.git'
         DOCKER_HUB_CREDENTIALS = 'DockerHubCred'
     }
@@ -62,11 +62,11 @@ pipeline {
         stage('BUILD DOCKER IMAGES') {
             steps {
         	script {
-        	     // Build backend Docker image
+        	     // Build and tag backend Docker image
                      //docker.build("${DOCKER_IMAGE_NAME_BACKEND}", './backend/Review_Radar/')
                      sh 'docker build -t "${DOCKER_IMAGE_NAME_BACKEND}" ./backend/Review_Radar/'
                         
-                     // Build frontend Docker image
+                     // Build and tag frontend Docker image
                      //docker.build("${DOCKER_IMAGE_NAME_FRONTEND}", './frontend/reviewradar/')
                      sh 'docker build -t "${DOCKER_IMAGE_NAME_FRONTEND}" ./frontend/reviewradar/'
                 }
@@ -77,13 +77,12 @@ pipeline {
             steps {
                 script{
                     sh 'echo "inside script"'
-                    docker.withRegistry('https://index.docker.io/v1/', 'DOCKER_HUB_CREDENTIALS') {
-                    sh 'echo "tagging and pushing frontend"'
-                    sh 'docker tag review-radar-frontend anjalijkumar/review-radar-frontend:latest'
+                    docker.withRegistry('', 'DOCKER_HUB_CREDENTIALS') {
+                    
+                    sh 'echo "pushing frontend"'
                     sh 'docker push anjalijkumar/review-radar-frontend:latest'
                     
-                    sh 'echo "tagging and pushing backend"'
-                    sh 'docker tag review-radar-backend anjalijkumar/review-radar-backend:latest'
+                    sh 'echo "pushing backend"'
                     sh 'docker push anjalijkumar/review-radar-backend:latest'
                     }
                 }
