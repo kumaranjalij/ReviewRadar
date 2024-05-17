@@ -88,7 +88,9 @@ pipeline {
                     sh 'docker push anjalijkumar/review-radar-backend:latest'
                     
                 }
+            }
         }
+        
 
         stage('RUN ANSIBLE PLAYBOOK') {
             steps {
