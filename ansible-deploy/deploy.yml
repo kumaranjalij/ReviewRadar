@@ -1,8 +1,6 @@
 ---
 - name: Deploying Review Radar on the kubernetes cluster
-  hosts: localhost
-  remote_user: anjali
-  become: false
+  hosts: all
   tasks:       
     - name: Deploying application to kubernetes cluster
       ansible.builtin.shell: |
