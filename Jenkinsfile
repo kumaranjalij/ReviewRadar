@@ -111,11 +111,11 @@ pipeline {
                 }
                 
                 //remove frontend container and image
-                sh "docker rm review-radar-frontend || true"
+                //sh "docker rm review-radar-frontend || true"
                 sh "docker rmi -f anjalijkumar/review-radar-frontend || true"
                 
                 //remove backend container and image
-                sh "docker rm review-radar-backend || true"
+                //sh "docker rm review-radar-backend || true"
                 sh "docker rmi -f anjalijkumar/review-radar-backend || true"
             }
         }
