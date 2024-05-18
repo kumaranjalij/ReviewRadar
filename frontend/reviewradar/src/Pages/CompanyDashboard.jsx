@@ -12,8 +12,11 @@ function CompanyDashboard() {
     // Function to fetch data from backend API
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://rr-backend-container:5001/${companyName}`);
+        const response = await fetch(`http://localhost:5001/${companyName}`);
         const data = await response.json();
+
+        console.log("companyData:",data);
+
         setCompanyData(data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -26,7 +29,7 @@ function CompanyDashboard() {
   const analyzeReview = async () => {
     try {
       // Define analyzeReview function
-      const response = await fetch(`http://rr-backend-container:5001/${companyName}/analyze`, {
+      const response = await fetch(`http://localhost:5001/${companyName}/analyze`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -34,6 +37,9 @@ function CompanyDashboard() {
         body: JSON.stringify({ sentence: newReview }),
       });
       const data = await response.json();
+
+      console.log("analysisResult:",data);
+
       setAnalysisResult(data);
     } catch (error) {
       console.error('Error analyzing review:', error);
