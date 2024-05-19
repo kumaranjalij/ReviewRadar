@@ -12,7 +12,7 @@ function CompanyDashboard() {
     // Function to fetch data from backend API
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:5001/${companyName}`);
+        const response = await fetch(`http://review-radar-backend-svc:5001/${companyName}`);
         const data = await response.json();
 
         console.log("companyData:",data);
@@ -29,7 +29,7 @@ function CompanyDashboard() {
   const analyzeReview = async () => {
     try {
       // Define analyzeReview function
-      const response = await fetch(`http://localhost:5001/${companyName}/analyze`, {
+      const response = await fetch(`http://review-radar-backend-svc:5001/${companyName}/analyze`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ function CompanyDashboard() {
       const data = await response.json();
 
       console.log("analysisResult:",data);
-
+      
       setAnalysisResult(data);
     } catch (error) {
       console.error('Error analyzing review:', error);
