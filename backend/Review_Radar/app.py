@@ -8,10 +8,22 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import base64
 import logging
+from logging.handlers import RotatingFileHandler
 
 #configure logging
-logging.basicConfig(filename='app.log' , level= logging.DEBUG,
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+# logging.basicConfig(filename='app.log' , level= logging.DEBUG,
+#                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+# Define a rotating file handler
+handler = RotatingFileHandler('app.log', maxBytes=90*1024*1024, backupCount=10)
+handler.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+
+# Get the root logger and configure it
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
+logger.addHandler(handler)
 
 # Create flask app
 app = Flask(__name__)
