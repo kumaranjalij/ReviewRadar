@@ -51,19 +51,11 @@ class NewReview(db.Model):
 # except Exception as e:
 #     logging.error('Error loading models and vectorizer: %s',str(e))
 
-def load_models():
-    try:
-        Apple_nmf_model = pickle.load(open("./Apple_model.pkl", "rb"))
-        Apple_vectorizer = pickle.load(open("./Apple_vectorizer.pkl", "rb"))
-        Samsung_nmf_model = pickle.load(open("./Samsung_model.pkl", "rb"))
-        Samsung_vectorizer = pickle.load(open("./Samsung_vectorizer.pkl", "rb"))
-        app.logger.info("Models and vectorizers loaded successfully")
-        return Apple_nmf_model, Apple_vectorizer, Samsung_nmf_model, Samsung_vectorizer
-    except Exception as e:
-        app.logger.error('Error loading models and vectorizers: %s', str(e))
-        return None, None, None, None
-
-Apple_nmf_model, Apple_vectorizer, Samsung_nmf_model, Samsung_vectorizer = load_models()
+Apple_nmf_model = pickle.load(open("Apple_model.pkl", "rb"))
+Apple_vectorizer = pickle.load(open("Apple_vectorizer.pkl","rb"))
+Samsung_nmf_model = pickle.load(open("Samsung_model.pkl","rb"))
+Samsung_vectorizer = pickle.load(open("Samsung_vectorizer.pkl","rb"))
+logging.info("Models and vectorizer loaded successfully")
 
 # Load the SentimentIntensityAnalyzer
 sid = SentimentIntensityAnalyzer()
