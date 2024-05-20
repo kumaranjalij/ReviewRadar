@@ -1,9 +1,13 @@
 import unittest
 from unittest import mock
-from app import analyze_review, app
+from app import analyze_review, app, load_models
 
 
 class TestReviewAnalyzer(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.Apple_nmf_model, cls.Apple_vectorizer, cls.Samsung_nmf_model, cls.Samsung_vectorizer = load_models()
+
     def setUp(self):
         # Set up Flask application context before each test
         self.app_context = app.app_context()
