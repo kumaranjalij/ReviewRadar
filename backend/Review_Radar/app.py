@@ -41,21 +41,15 @@ class NewReview(db.Model):
     company_name = db.Column(db.String(255))
     reviews = db.Column(db.Text)  # Corrected column name to 'reviews'
 
-# #load models and vectorizer
-# try:
-#     Apple_nmf_model = pickle.load(open("Apple_model.pkl", "rb"))
-#     Apple_vectorizer = pickle.load(open("Apple_vectorizer.pkl","rb"))
-#     Samsung_nmf_model = pickle.load(open("Samsung_model.pkl","rb"))
-#     Samsung_vectorizer = pickle.load(open("Samsung_vectorizer.pkl","rb"))
-#     logging.info("Models and vectorizer loaded successfully")
-# except Exception as e:
-#     logging.error('Error loading models and vectorizer: %s',str(e))
-
-Apple_nmf_model = pickle.load(open("./Apple_model.pkl", "rb"))
-Apple_vectorizer = pickle.load(open("./Apple_vectorizer.pkl","rb"))
-Samsung_nmf_model = pickle.load(open("./Samsung_model.pkl","rb"))
-Samsung_vectorizer = pickle.load(open("./Samsung_vectorizer.pkl","rb"))
-logging.info("Models and vectorizer loaded successfully")
+#load models and vectorizer
+try:
+    Apple_nmf_model = pickle.load(open("Apple_model.pkl", "rb"))
+    Apple_vectorizer = pickle.load(open("Apple_vectorizer.pkl","rb"))
+    Samsung_nmf_model = pickle.load(open("Samsung_model.pkl","rb"))
+    Samsung_vectorizer = pickle.load(open("Samsung_vectorizer.pkl","rb"))
+    logging.info("Models and vectorizer loaded successfully")
+except Exception as e:
+    logging.error('Error loading models and vectorizer: %s',str(e))
 
 # Load the SentimentIntensityAnalyzer
 sid = SentimentIntensityAnalyzer()

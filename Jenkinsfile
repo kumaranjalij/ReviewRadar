@@ -19,7 +19,7 @@ pipeline {
         }
   
         
-	stage('BACKEND BUILD') {
+	stage('BACKEND BUILD AND TEST') {
 	    steps {
 		// Activate the virtual environment
 		withEnv(['PATH+VENV=/var/lib/jenkins/workspace/ReviewRadar/rrenv/bin']) {
@@ -34,18 +34,6 @@ pipeline {
 		}
 	    }
 	}
-
-
-	stage('BACKEND TEST') {
-	    steps {
-		// Activate the existing Python environment
-		withEnv(['PATH+VENV=/var/lib/jenkins/workspace/ReviewRadar/rrenv/bin']) {
-		    // Run your test script
-		    sh 'python3 ./backend/Review_Radar/test_review_analyzer.py'
-		}
-	    }
-	}
-
         
         stage('FRONTEND BUILD') {
 	    steps {
