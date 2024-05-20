@@ -53,10 +53,10 @@ class NewReview(db.Model):
 
 def load_models():
     try:
-        Apple_nmf_model = pickle.load(open("Apple_model.pkl", "rb"))
-        Apple_vectorizer = pickle.load(open("Apple_vectorizer.pkl", "rb"))
-        Samsung_nmf_model = pickle.load(open("Samsung_model.pkl", "rb"))
-        Samsung_vectorizer = pickle.load(open("Samsung_vectorizer.pkl", "rb"))
+        Apple_nmf_model = pickle.load(open("./Apple_model.pkl", "rb"))
+        Apple_vectorizer = pickle.load(open("./Apple_vectorizer.pkl", "rb"))
+        Samsung_nmf_model = pickle.load(open("./Samsung_model.pkl", "rb"))
+        Samsung_vectorizer = pickle.load(open("./Samsung_vectorizer.pkl", "rb"))
         app.logger.info("Models and vectorizers loaded successfully")
         return Apple_nmf_model, Apple_vectorizer, Samsung_nmf_model, Samsung_vectorizer
     except Exception as e:

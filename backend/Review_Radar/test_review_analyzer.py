@@ -12,7 +12,7 @@ class TestReviewAnalyzer(unittest.TestCase):
         # Set up Flask application context before each test
         self.app_context = app.app_context()
         self.app_context.push()
-
+        
     def tearDown(self):
         # Remove Flask application context after each test
         self.app_context.pop()
