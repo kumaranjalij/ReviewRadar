@@ -37,7 +37,7 @@ pipeline {
         
         stage('FRONTEND BUILD') {
 	    steps {
-		// Change directory to your specific directory testing
+		// Change directory to your specific directory
 		dir('./frontend/reviewradar/') {
 		    // Run npm install and npm run build commands
 		    sh 'npm install'
