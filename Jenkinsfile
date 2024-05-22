@@ -12,7 +12,7 @@ pipeline {
         stage('GIT CHECKOUT') {
             steps {
                 script {
-                        // Checkout the code from the GitHub repo 
+                        // Checkout the code from the GitHub repo testing
                         git branch: 'main', credentialsId: 'ReviewRadar-webhook', url: "${GITHUB_REPO_URL}"
                 }
             }
