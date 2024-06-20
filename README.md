@@ -11,6 +11,33 @@ The **DevOps** implementation is a core component of the project, aimed at autom
 
 
 
+## File Structure
+
+```bash
+ReviewRadar/
+├── ansible-deploy/
+│   ├── deploy.yml
+│   └── inventory
+├── backend/
+│   └── Review_Radar/
+│       └── [backend files]
+├── frontend/
+│   └── reviewradar/
+│       └── [frontend files]
+├── k8s/
+│   └── [k8s service and deploy files]
+└── Jenkinsfile
+
+```
+
+
+- **backend/Review_Radar/:** Contains backend application code including configuration, models, utilities, and requirements.
+- **frontend/reviewradar/:** Contains frontend application code including React components, configuration files, and assets.
+- **k8s/:** Contains Kubernetes deployment and service configuration files.
+- **ansible-deploy/:** Contains Ansible playbook and inventory files for deployment.
+- **Jenkinsfile:** Defines the Jenkins pipeline for CI/CD.
+
+
 ## Tech Stack
 
 ### Backend
